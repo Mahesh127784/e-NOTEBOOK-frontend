@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import NoteContext from "../context/notes/NoteContext";
 import Notes from "./Notes";
 
 const NotesBody = () => {
   const Allnotes = useContext(NoteContext);
-  const { notes } = Allnotes;
+  const { notes, getnote } = Allnotes;
   const colors = [
     "secondary",
     "success",
@@ -15,6 +15,16 @@ const NotesBody = () => {
     "dark",
     "primary",
   ];
+
+  useEffect(() => {
+    try {
+      getnote();
+      console.log("rendered");
+    } catch (error) {
+      console.error("Error fetching notes:", error);
+    }
+    // eslint-disable-next-line
+  }, []);
   console.log(notes);
   console.log("body");
 

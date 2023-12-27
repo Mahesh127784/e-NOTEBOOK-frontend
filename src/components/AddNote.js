@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import NoteContext from "../context/notes/NoteContext";
 
 function AddNote() {
-  const { addnote, getnote } = useContext(NoteContext);
+  const { addnote } = useContext(NoteContext);
 
   const [note, setNote] = useState({ title: "", description: "", tags: "" });
 
@@ -26,15 +26,6 @@ function AddNote() {
     }
   };
 
-  useEffect(() => {
-    try {
-      getnote();
-      console.log("rendered");
-    } catch (error) {
-      console.error("Error fetching notes:", error);
-    }
-    // eslint-disable-next-line
-  }, []);
   return (
     <div>
       <h2 className="my-3" style={style}>
