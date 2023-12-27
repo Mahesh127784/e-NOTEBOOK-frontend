@@ -2,7 +2,7 @@ import React from "react";
 import DeleteNDedit from "./DeleteNDedit";
 
 const Notes = (props) => {
-  const { title, description, date } = props.note;
+  const { title, tags, description, date } = props.note;
   const style = { maxWidth: "18rem" };
 
   return (
@@ -12,10 +12,11 @@ const Notes = (props) => {
       </div>
       <div className="card-body ">
         <p className="card-text">{description}</p>
+        <p className="card-text">Tags-{tags}</p>
         <p className="card-text">
           <small className="text-muted">{date} </small>
         </p>
-        <DeleteNDedit note={props.note} />
+        <DeleteNDedit updateNote={props.updateNote} note={props.note} />
       </div>
     </div>
   );

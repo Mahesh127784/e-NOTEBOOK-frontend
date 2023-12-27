@@ -8,6 +8,7 @@ function AddNote() {
 
   const style = {
     textDecoration: "underline",
+    color: "blue",
   };
 
   const handleClick = (e) => {
@@ -18,7 +19,6 @@ function AddNote() {
 
   const onchange = (e) => {
     const { name, value } = e.target;
-
     if (name === "description") {
       setNote({ ...note, description: value });
     } else {
@@ -37,6 +37,7 @@ function AddNote() {
             Title
           </label>
           <input
+            style={{ backgroundColor: "pink" }}
             name="title"
             value={note.title}
             type="text"
@@ -51,12 +52,14 @@ function AddNote() {
             Description
           </label>
           <textarea
+            style={{ backgroundColor: "pink" }}
             value={note.description}
             onChange={onchange}
             className="form-control"
             id="description"
             name="description"
             rows="4"
+            placeholder="Add a note "
           ></textarea>
         </div>
         <div className="mb-3">
@@ -64,6 +67,7 @@ function AddNote() {
             Tags
           </label>
           <input
+            style={{ backgroundColor: "pink" }}
             value={note.tags}
             onChange={onchange}
             type="text"

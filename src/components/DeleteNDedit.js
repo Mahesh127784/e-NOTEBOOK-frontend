@@ -2,19 +2,16 @@ import React, { useContext } from "react";
 import NoteContaxt from "../context/notes/NoteContext";
 
 const DeleteNDedit = (props) => {
-  const { deletenote, editnote } = useContext(NoteContaxt);
+  const { deletenote } = useContext(NoteContaxt);
 
-  const handleEdit = (id) => {
-    editnote(id);
-  };
   const handleDelete = (id) => {
     deletenote(id);
   };
-  const { note } = props;
+  const { note, updateNote } = props;
   return (
     <div>
       <i
-        onClick={() => handleEdit(note._id)}
+        onClick={() => updateNote(note)}
         className="fa-solid fa-pen-to-square mx-3"
       ></i>
       <i
