@@ -56,21 +56,27 @@ const NoteState = (props) => {
 
   //function for edit notes
   async function editnote(note) {
-    const response = await fetch(`${port}/api/notes/noteupdate/${note.id}`, {
+    const { title, description, tags, _id } = note;
+    const response = await fetch(`${port}/api/notes/noteupdate/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "auth-token":
           "eyJhbGciOiJIUzI1NiJ9.NjU4NTQ0MTIzOGU5MjBkZmY1NzEwYjJi.xlkuEFFoLsxzkW_lspjdafpk8ZPADksAKx1qfQYYADM",
       },
-      body: JSON.stringify({
-        title: note.title,
-        description: note.description,
-        tags: note.tags,
-      }),
+      body: JSON.stringify({ title, description, tags }),
     });
     const resp = await response.json();
-    console.log(resp);
+
+    // update on client side
+    const updatedNotes = notes.map((element) => {
+      if (element._id === _id) {
+        return { ...element, title, description, tags };
+      } else {
+        return element;
+      }
+    });
+    setNotes(updatedNotes);
   }
 
   return (

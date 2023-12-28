@@ -32,7 +32,8 @@ const NotesBody = () => {
     ref.current.click();
     setNote(note);
   };
-  const ref = useRef();
+  const ref = useRef(null);
+  const refClose = useRef(null);
 
   const onchange = (e) => {
     const { name, value } = e.target;
@@ -45,8 +46,8 @@ const NotesBody = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(note);
     editnote(note);
+    refClose.current.click();
   };
   // console.log("body");
   return (
@@ -128,6 +129,14 @@ const NotesBody = () => {
               </form>
             </div>
             <div className="modal-footer">
+              <button
+                ref={refClose}
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
               <button
                 onClick={handleClick}
                 type="button"
