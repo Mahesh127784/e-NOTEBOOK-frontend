@@ -22,7 +22,6 @@ function Signup() {
       body: JSON.stringify({ name, password, email }),
     });
     const json = await response.json();
-    console.log(json);
     if (json.authtoken) {
       //save authtoken in local storage and redirect
       localStorage.setItem("token", json.authtoken);

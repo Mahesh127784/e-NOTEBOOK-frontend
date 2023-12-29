@@ -4,7 +4,7 @@ import AlertContaxt from "../context/alert/AlertContext";
 
 function AddNote() {
   const { addnote } = useContext(NoteContext);
-  const alert = useContext(AlertContaxt);
+  const { showAlert } = useContext(AlertContaxt);
 
   const [note, setNote] = useState({ title: "", description: "", tags: "" });
 
@@ -18,7 +18,7 @@ function AddNote() {
     e.preventDefault();
     addnote(note);
     setNote({ title: "", description: "", tags: "" });
-    alert.showAlert("confirmed");
+    showAlert("Your note saved successfully", "danger");
   };
 
   const onchange = (e) => {

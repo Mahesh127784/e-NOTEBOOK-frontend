@@ -3,9 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
   let location = useLocation();
-  // console.log(location);
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-danger fixed-top opacity-75">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           <b>iNOTEBOOK</b>

@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import NoteContext from "../context/notes/NoteContext";
+import AlertContaxt from "../context/alert/AlertContext";
 import Notes from "./Notes";
 
 const NotesBody = () => {
   const Allnotes = useContext(NoteContext);
+  const { showAlert } = useContext(AlertContaxt);
+
   const { notes, getnote, editnote } = Allnotes;
   const [note, setNote] = useState({
     title: "",
@@ -25,7 +28,6 @@ const NotesBody = () => {
   useEffect(() => {
     try {
       getnote();
-      console.log("rendered");
     } catch (error) {
       console.error("Error fetching notes:", error);
     }
@@ -51,9 +53,9 @@ const NotesBody = () => {
   const handleClick = (e) => {
     e.preventDefault();
     editnote(note);
+    showAlert("Your note has been updated", "success");
     refClose.current.click();
   };
-  console.log(note);
   return (
     <>
       <button

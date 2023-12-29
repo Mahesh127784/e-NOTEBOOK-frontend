@@ -4,13 +4,15 @@ import { useState } from "react";
 export default function AlertState(props) {
   const [alert, setAlert] = useState(null);
 
-  const showAlert = (message) => {
+  const showAlert = (message, clr) => {
     setAlert({
-      msg: message,
+      message,
+      clr,
     });
+    console.log(alert);
     setTimeout(() => {
       setAlert(null);
-    }, 1500);
+    }, 2000);
   };
   return (
     <AlertContaxt.Provider value={{ showAlert, alert }}>
