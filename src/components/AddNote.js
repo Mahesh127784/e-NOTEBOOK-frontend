@@ -1,20 +1,24 @@
 import React, { useContext, useState } from "react";
 import NoteContext from "../context/notes/NoteContext";
+import AlertContaxt from "../context/alert/AlertContext";
 
 function AddNote() {
   const { addnote } = useContext(NoteContext);
+  const alert = useContext(AlertContaxt);
 
   const [note, setNote] = useState({ title: "", description: "", tags: "" });
 
   const style = {
     textDecoration: "underline",
-    color: "blue",
+    color: "maroon",
   };
+  const inputstyle = { backgroundColor: "darkgrey" };
 
   const handleClick = (e) => {
     e.preventDefault();
     addnote(note);
     setNote({ title: "", description: "", tags: "" });
+    alert.showAlert("confirmed");
   };
 
   const onchange = (e) => {
@@ -37,7 +41,7 @@ function AddNote() {
             Title
           </label>
           <input
-            style={{ backgroundColor: "pink" }}
+            style={inputstyle}
             name="title"
             value={note.title}
             type="text"
@@ -52,7 +56,7 @@ function AddNote() {
             Description
           </label>
           <textarea
-            style={{ backgroundColor: "pink" }}
+            style={inputstyle}
             value={note.description}
             onChange={onchange}
             className="form-control"
@@ -67,7 +71,7 @@ function AddNote() {
             Tags
           </label>
           <input
-            style={{ backgroundColor: "pink" }}
+            style={inputstyle}
             value={note.tags}
             onChange={onchange}
             type="text"
@@ -78,8 +82,9 @@ function AddNote() {
           />
         </div>
         <button
+          disabled={note.title.length < 3 || note.description.length < 5}
           onClick={handleClick}
-          //   type="submit"
+          type="submit"
           className="btn btn-primary "
         >
           Add Note

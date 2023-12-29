@@ -34,7 +34,7 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tags }),
     });
     const resp = await response.json();
-    if (resp.title) setNotes(notes.concat(resp));
+    if (resp.title && resp.description) setNotes(notes.concat(resp));
   }
 
   //function for delete notes

@@ -12,7 +12,7 @@ const Notes = (props) => {
       </div>
       <div className="card-body ">
         <p className="card-text">{description}</p>
-        <p className="card-text">Tags-{tags}</p>
+        <p className="card-text">-{tags ? tags : "general"}-</p>
         <p className="card-text">
           <small className="text-muted">{date} </small>
         </p>

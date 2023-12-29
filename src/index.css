@@ -1,9 +1,5 @@
 body {
-      background-image: linear-gradient(to top right,
-      orange,
-      tomato 50%,
-      deeppink 50%,
-      darkorange);
+background-color: seashell;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -18,4 +14,33 @@ code {
 }
 i{
   cursor: pointer;
+}
+.imp{
+  width: 120%;
+}
+.login{
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  margin-top: 3%;
+}
+.header{
+  text-decoration: underline;
+  color: maroon;
+  font-weight: 700;
+  font-size: 23px;
+}
+.signup{
+  font-weight: 700;
+  /* text-decoration: none; */
+  color: rgb(33, 33, 248);
+
+}.terms{
+  margin: 4px;
+  text-decoration: none;
+  color: blue;
+}
+.footer{
+  margin-top: 16px;
+  margin-left: 10px;
 }

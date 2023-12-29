@@ -5,7 +5,11 @@ import Notes from "./Notes";
 const NotesBody = () => {
   const Allnotes = useContext(NoteContext);
   const { notes, getnote, editnote } = Allnotes;
-  const [note, setNote] = useState({});
+  const [note, setNote] = useState({
+    title: "",
+    description: "",
+    tags: "general",
+  });
 
   const colors = [
     "secondary",
@@ -49,7 +53,7 @@ const NotesBody = () => {
     editnote(note);
     refClose.current.click();
   };
-  // console.log("body");
+  console.log(note);
   return (
     <>
       <button
@@ -138,6 +142,7 @@ const NotesBody = () => {
                 Close
               </button>
               <button
+                disabled={note.title.length < 3 || note.description.length < 5}
                 onClick={handleClick}
                 type="button"
                 className="btn btn-primary"
@@ -153,11 +158,15 @@ const NotesBody = () => {
           style={{
             marginBottom: "20px",
             textDecoration: "underline",
-            color: "blue",
+            color: "maroon",
           }}
         >
           Your notes
         </h2>
+        <div style={{ color: "blue", fontWeight: "bold", fontSize: "20px" }}>
+          {" "}
+          {notes.length === 0 && "Make a note to display here"}
+        </div>
         {notes.map((note, index) => {
           // Use the modulo operator to cycle through colors
           const clr = colors[index % colors.length];

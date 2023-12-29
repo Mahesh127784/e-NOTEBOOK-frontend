@@ -3,35 +3,33 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import NoteState from "./context/notes/NoteState";
+import AlertState from "./context/alert/Alertstate";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import Alert from "./components/Alert";
-// import { useState } from "react";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Alert from "./components/Alert";
 
 function App() {
-  // const [, setAlert] = useState(null);
-  // const showAlert = (message) => {
-  //   setAlert({
-  //     msg: message,
-  //   });
-  //   setTimeout(() => {
-  //     setAlert(null);
-  //   }, 1500);
-  // };
   return (
     <>
-      <NoteState>
-        <Router>
-          <Navbar />
-          {/* <Alert alert={alert} /> */}
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<Home />} />
+      <AlertState>
+        <NoteState>
+          <Router>
+            <Navbar />
+            <Alert />
+            <div className="container">
+              <Routes>
+                <Route path="/" element={<Home />} />
 
-              <Route path="/about" element={<About />} />
-            </Routes>
-          </div>
-        </Router>
-      </NoteState>
+                <Route path="/about" element={<About />} />
+
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+              </Routes>
+            </div>
+          </Router>
+        </NoteState>
+      </AlertState>
     </>
   );
 }
