@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import NoteContext from "../context/notes/NoteContext";
 import AlertContaxt from "../context/alert/AlertContext";
 import Notes from "./Notes";
+import { useNavigate } from "react-router-dom";
 
 const NotesBody = () => {
+  const navigate = useNavigate();
   const Allnotes = useContext(NoteContext);
   const { showAlert } = useContext(AlertContaxt);
 
@@ -27,7 +29,8 @@ const NotesBody = () => {
 
   useEffect(() => {
     try {
-      getnote();
+      if (localStorage.getItem("token")) getnote();
+      else navigate("/login");
     } catch (error) {
       console.error("Error fetching notes:", error);
     }

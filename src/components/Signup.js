@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import AlertContaxt from "../context/alert/AlertContext";
 
 function Signup() {
   const [cred, setCred] = useState({ name: "", email: "", password: "" });
   let navigate = useNavigate();
+  const { showAlert } = useContext(AlertContaxt);
 
   const onchange = (e) => {
     const { value, name } = e.target;
@@ -26,8 +28,9 @@ function Signup() {
       //save authtoken in local storage and redirect
       localStorage.setItem("token", json.authtoken);
       navigate("/");
+      showAlert("Your account has been created successfully", "success");
     } else {
-      console.log("invalid");
+      showAlert("Please enter proper credentials", "danger");
     }
   };
 

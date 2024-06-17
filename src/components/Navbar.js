@@ -5,7 +5,7 @@ export default function Navbar() {
   let location = useLocation();
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-danger fixed-top opacity-75">
-      <div className="container-fluid">
+      <div className="container-fluid"> 
         <Link className="navbar-brand" to="/">
           <b>iNOTEBOOK</b>
         </Link>
@@ -45,12 +45,26 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-        <Link to="/login" className="btn btn-primary mx-1" role="button">
-          Login
-        </Link>
-        <Link to="/signup" className="btn btn-primary mx-1" role="button">
-          signup
-        </Link>
+        {!localStorage.getItem("token") ? (
+          <div>
+            {" "}
+            <Link to="/login" className="btn btn-primary mx-1" role="button">
+              Login
+            </Link>
+            <Link to="/signup" className="btn btn-primary mx-1" role="button">
+              signup
+            </Link>
+          </div>
+        ) : (
+          <Link
+            to="/login"
+            onClick={() => localStorage.removeItem("token")}
+            className="btn btn-primary mx-1"
+            role="button"
+          >
+            Logout
+          </Link>
+        )}
       </div>
     </nav>
   );

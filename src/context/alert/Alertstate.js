@@ -9,10 +9,9 @@ export default function AlertState(props) {
       message,
       clr,
     });
-    console.log(alert);
     setTimeout(() => {
       setAlert(null);
-    }, 2000);
+    }, 2500);
   };
   return (
     <AlertContaxt.Provider value={{ showAlert, alert }}>
