@@ -7,7 +7,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-dark bg-danger fixed-top opacity-75">
       <div className="container-fluid"> 
         <Link className="navbar-brand" to="/">
-          <b>iNOTEBOOK</b>
+          <b>eNOTEBOOK</b>
         </Link>
         <button
           className="navbar-toggler"
